@@ -61,10 +61,6 @@ export default class Login extends React.Component {
         this.setState({password: text})
     }
     loginPress = (userName,password) => {
-        // if(this.isValid) 
-        // {
-            
-        // }
         //alert('User Name' + userName + 'Password' + password);
         if(this.isValid)
         {

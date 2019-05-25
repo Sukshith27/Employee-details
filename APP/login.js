@@ -9,7 +9,7 @@ export default class Login extends React.Component {
         this.state = {
             userName: '',
             password: '',
-            valid: false
+            valid: true
         };
     }
 
@@ -20,12 +20,12 @@ export default class Login extends React.Component {
           this.setState({valid: true})
         }
         else if (userName.length === 0) {
-          this.setState({ error: 'You must enter User Name' });
-           //alert(this.state.error);
+                alert('User name is empty');
+                this.setState({valid: false});
         }
         else if (password.length === 0) {
-          this.setState({ error: 'You must enter a password' });
-        //   alert(this.state.error)
+              this.setState({ valid: false});
+            //   alert(this.state.error)
         }
     
         return valid;
@@ -66,6 +66,8 @@ export default class Login extends React.Component {
             
         // }
         //alert('User Name' + userName + 'Password' + password);
+        if(this.isValid)
+        {
             fetch('https://api.myjson.com/bins/m1tm8')
             .then((response) => response.json())
             .then((responseJson) => {
@@ -75,7 +77,12 @@ export default class Login extends React.Component {
                     //alert('Logged in');
                     this.props.navigation.navigate('Home');
                 }
+                else
+                {
+                    alert('incorrect credentials');
+                }
             })
+        }
     }
 }
 
